@@ -20,4 +20,16 @@ class ScorePrinterSpec extends Specification {
         where:
         battingAverage << [1, 1.00, 1.0000]
     }
+
+    def "打率が10割未満の場合は、先頭の0を省略して「.333」のように出力すること"() {
+        setup:
+        def scorePrinter = new ScorePrinter()
+
+        expect:
+        scorePrinter.format(battingAverage) == result
+
+        where:
+        battingAverage | result
+        0.333          | ".333"
+    }
 }
