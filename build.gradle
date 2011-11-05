@@ -1,0 +1,35 @@
+apply plugin:'java'
+apply plugin:'groovy'
+apply plugin:'eclipse'
+
+defaultTasks 'clean', 'test'
+
+sourceCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy-all:1.8.3'
+    //testCompile 'junit:junit:4.8.2'
+    testCompile('org.spockframework:spock-core:0.5-groovy-1.8') {
+        exclude group:'org.codehaus.groovy', module:'groovy-all'
+    }
+}
+
+def defaultEncoding = 'UTF-8'
+compileJava {
+    options.encoding = defaultEncoding
+}
+compileTestJava {
+    options.encoding = defaultEncoding
+}
+compileGroovy {
+    groovyOptions.encoding = defaultEncoding
+    options.encoding = defaultEncoding
+}
+compileTestGroovy {
+    groovyOptions.encoding = defaultEncoding
+    options.encoding = defaultEncoding
+}
