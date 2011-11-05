@@ -40,4 +40,13 @@ class PlayerSpec extends Specification {
     expect:
     player.getBattingAverage() == null
   }
+  def "打数が0の場合は、0.000を返す"() {
+    setup:
+    def player = new Player(box:3, atBat:0, hit:0)
+
+
+    expect:
+    player.getBattingAverage() == 0.000
+  }
+
 }
