@@ -45,6 +45,8 @@ class PlayerSpec extends Specification {
     def player = new Player(box:3, atBat:0, hit:0)
 
     expect:
+    player.getBattingAverage().getClass() == BigDecimal.class
+    player.getBattingAverage().scale() == 3
     player.getBattingAverage() == 0.000
   }
 
