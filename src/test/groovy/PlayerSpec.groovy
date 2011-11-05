@@ -31,4 +31,13 @@ class PlayerSpec extends Specification {
     expect:
     player.getBattingAverage() == 0.297
   }
+
+  def "打席数が0の場合は、打率を計算せずにnullを返す"() {
+    setup:
+    def player = new Player(box:0, atBat:455, hit:135)
+
+
+    expect:
+    player.getBattingAverage() == null
+  }
 }
