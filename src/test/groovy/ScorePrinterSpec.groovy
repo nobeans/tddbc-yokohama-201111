@@ -30,6 +30,10 @@ class ScorePrinterSpec extends Specification {
 
         where:
         battingAverage | result
+        0.000          | ".000"
+        0.001          | ".001"
         0.333          | ".333"
+        0.999          | ".999"
+        0.9999999      | ".9999999"
     }
 }
