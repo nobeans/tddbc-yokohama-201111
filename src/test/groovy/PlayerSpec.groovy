@@ -2,7 +2,7 @@ import spock.lang.*
 
 class PlayerSpec extends Specification {
 
-  def "打席数と打数と案段数を受け取り、打率を計算する"() {
+  def "打席数と打数と安打数を受け取り、打率を計算する"() {
     setup:
     def player = new Player(box:box, atBat:atBat, hit:hit)
 
@@ -15,7 +15,7 @@ class PlayerSpec extends Specification {
     4   | 4     | 1   | 0.25
   }
 
-  def "打席数と打数と案段数を受け取り、小数第四位で四捨五入する (無限小数、切り捨て)"() {
+  def "打席数と打数と安打数を受け取り、小数第四位で四捨五入する (無限小数、四捨)"() {
     setup:
     def player = new Player(box:3, atBat:3, hit:1)
 
@@ -24,7 +24,7 @@ class PlayerSpec extends Specification {
 
   }
 
-  def "打席数と打数と案段数を受け取り、小数第四位で四捨五入する (切り上げ)"() {
+  def "打席数と打数と安打数を受け取り、小数第四位で四捨五入する (五入)"() {
     setup:
     def player = new Player(box:515, atBat:455, hit:135)
 
