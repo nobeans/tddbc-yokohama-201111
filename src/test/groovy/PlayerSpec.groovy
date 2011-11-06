@@ -7,7 +7,7 @@ class PlayerSpec extends Specification {
     def player = new Player(box:box, atBat:atBat, hit:hit)
 
     expect:
-    player.getBattingAverage() == battingAverage
+    player.battingAverage == battingAverage
 
     where:
     box | atBat | hit | battingAverage
@@ -20,7 +20,7 @@ class PlayerSpec extends Specification {
     def player = new Player(box:3, atBat:3, hit:1)
 
     expect:
-    player.getBattingAverage() == 0.333
+    player.battingAverage == 0.333
 
   }
 
@@ -29,7 +29,7 @@ class PlayerSpec extends Specification {
     def player = new Player(box:515, atBat:455, hit:135)
 
     expect:
-    player.getBattingAverage() == 0.297
+    player.battingAverage == 0.297
   }
 
   def "打席数が0の場合は、打率を計算せずにnullを返す"() {
@@ -37,7 +37,7 @@ class PlayerSpec extends Specification {
     def player = new Player(box:0, atBat:455, hit:135)
 
     expect:
-    player.getBattingAverage() == null
+    player.battingAverage == null
   }
 
   def "打数が0の場合は、0.000を返す"() {
@@ -45,9 +45,9 @@ class PlayerSpec extends Specification {
     def player = new Player(box:3, atBat:0, hit:0)
 
     expect:
-    player.getBattingAverage().getClass() == BigDecimal.class
-    player.getBattingAverage().scale() == 3
-    player.getBattingAverage() == 0.000
+    player.battingAverage.class == BigDecimal.class
+    player.battingAverage.scale() == 3
+    player.battingAverage == 0.000
   }
 
 }
